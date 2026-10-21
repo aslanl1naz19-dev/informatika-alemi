@@ -1,7 +1,7 @@
 // Supabase Project Settings > API dəyərləri.
 // YALNIZ publishable/anon key istifadə edin. service_role/secret key yazmayın.
 window.INFORMATIKA_CONFIG = {
-  url: "https://YOUR-PROJECT-ID.supabase.co",
-  anonKey: "YOUR_SUPABASE_PUBLISHABLE_OR_ANON_KEY",
-  teacherUid: "PASTE_TEACHER_UID_HERE"
+  url: "https://zmgloyoomzjjgubhlngf.supabase.co",
+  anonKey: "sb_publishable_8qdjLZJYnjDCXS3br59ksg_RX67N6zX",
+  teacherUid: "9d0c1125-b3a6-46ec-b8c1-f049699392bd"
 };
