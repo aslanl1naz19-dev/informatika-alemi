@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>İnformatika aləmi</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#eef3fb;--glass:rgba(255,255,255,.75);--text:#10192b;--muted:#53627e;--c1:#0891b2;--c2:#7c3aed;--c3:#059669;--border:rgba(16,25,43,.12);--rain:#0891b2}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#070b16;--glass:rgba(18,26,48,.65);--text:#e8eefc;--muted:#9aa9c9;--c1:#22d3ee;--c2:#a78bfa;--c3:#34d399;--border:rgba(167,189,255,.16);--rain:#22d3ee}}
+:root[data-theme="dark"]{--bg:#070b16;--glass:rgba(18,26,48,.65);--text:#e8eefc;--muted:#9aa9c9;--c1:#22d3ee;--c2:#a78bfa;--c3:#34d399;--border:rgba(167,189,255,.16);--rain:#22d3ee}
+html{scroll-behavior:smooth;scroll-padding-top:80px;height:100%}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:hidden}
+#rain{position:fixed;inset:0;width:100%;height:100%;z-index:-2;opacity:.35}
+.glow{position:fixed;z-index:-1;width:50vmax;height:50vmax;border-radius:50%;filter:blur(90px);opacity:.25;pointer-events:none}
+.g1{background:var(--c2);top:-15vmax;right:-10vmax}.g2{background:var(--c1);bottom:-20vmax;left:-15vmax}
+.mono{font-family:ui-monospace,"Cascadia Code",Consolas,Menlo,monospace}
+header{position:fixed;left:0;right:0;top:0;z-index:30;padding:calc(10px + env(safe-area-inset-top,0px)) 20px 10px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.logo{font-weight:800;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent;font-size:18px}
+nav{display:flex;gap:2px;flex-wrap:wrap}
+nav a{color:var(--text);text-decoration:none;padding:6px 12px;border-radius:99px;font-size:14px;transition:.2s}
+nav a:hover{background:var(--border)}
+.ib{background:var(--glass);border:1px solid var(--border);color:var(--text);border-radius:99px;padding:6px 12px;cursor:pointer;font-size:14px}
+main{max-width:1040px;margin:0 auto;padding:0 20px 40px}
+section{padding:80px 0 10px}
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:110px}
+.pill{display:inline-block;border:1px solid var(--border);background:var(--glass);padding:5px 14px;border-radius:99px;font-size:13px;color:var(--c1);width:fit-content}
+h1{font-size:clamp(34px,8vw,72px);line-height:1.05;margin:18px 0;font-weight:900;letter-spacing:-1.5px}
+.grad{background:linear-gradient(90deg,var(--c1),var(--c2),var(--c3));background-size:200%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 6s linear infinite}
+@keyframes sh{to{background-position:200%}}
+.type{color:var(--c3);min-height:1.6em;font-size:clamp(16px,3vw,22px)}
+.type::after{content:"▌";animation:bl 1s steps(1) infinite}
+@keyframes bl{50%{opacity:0}}
+.lead{color:var(--muted);max-width:560px;font-size:18px}
+.btn{display:inline-block;background:linear-gradient(90deg,var(--c1),var(--c2));color:#fff;padding:12px 22px;border-radius:12px;text-decoration:none;font-weight:700;margin:8px 10px 0 0;border:0;cursor:pointer;font-size:15px;box-shadow:0 8px 30px -8px var(--c2);transition:.2s}
+.btn:hover{transform:translateY(-3px)}
+.btn.alt{background:var(--glass);color:var(--text);box-shadow:none;border:1px solid var(--border)}
+.stats{display:flex;gap:14px;flex-wrap:wrap;margin-top:40px}
+.stat{background:var(--glass);border:1px solid var(--border);border-radius:16px;padding:14px 22px;backdrop-filter:blur(10px)}
+.stat b{display:block;font-size:28px;color:var(--c1)}.stat span{color:var(--muted);font-size:13px}
+h2{font-size:clamp(26px,5vw,38px);margin:0 0 6px;font-weight:800}
+.sub{color:var(--muted);margin:0 0 28px}
+.rv{opacity:0;transform:translateY(30px);transition:.7s}.rv.in{opacity:1;transform:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px}
+.cls{position:relative;overflow:hidden;background:var(--glass);border:1px solid var(--border);border-radius:18px;padding:18px 14px;text-align:left;color:var(--text);cursor:pointer;font:inherit;backdrop-filter:blur(10px);transition:.25s}
+.cls::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,var(--h),transparent 70%);opacity:.25;transition:.25s}
+.cls:hover,.cls.on{transform:translateY(-5px) rotate(-1deg);border-color:var(--h)}
+.cls:hover::before,.cls.on::before{opacity:.55}
+.cls>*{position:relative}.cls .e{font-size:26px}.cls b{display:block;font-size:30px;font-weight:900}.cls small{color:var(--muted)}
+.panel,.card,.tool,.acc,.flip>div{background:var(--glass);border:1px solid var(--border);border-radius:18px;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.panel{margin-top:18px;padding:22px}
+.panel h3{margin:0 0 14px;font-size:20px}
+.task{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;margin:10px 0;border:1px solid var(--border);border-radius:14px;border-left:4px solid var(--c1)}
+.task input{margin-top:6px;accent-color:var(--c3);width:18px;height:18px}
+.task.done{opacity:.5}.task.done b{text-decoration:line-through}
+.task div{flex:1}.task span{color:var(--muted);font-size:13px}
+.del{background:none;border:0;color:#f87171;cursor:pointer;font-size:18px;display:none}
+body.edit .del{display:block}
+.form{display:none;margin-top:16px;gap:8px;flex-wrap:wrap}
+body.edit .form{display:flex}
+.form input,.tool input,.tool textarea{flex:1 1 160px;background:transparent;color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px;font:inherit}
+.hint{display:none;color:var(--c3);font-size:13px;margin-top:8px}body.edit .hint{display:block}
+.acc{margin-bottom:12px;overflow:hidden}
+.acc button{width:100%;text-align:left;background:none;border:0;color:var(--text);padding:18px 20px;font:inherit;font-weight:700;font-size:17px;cursor:pointer;display:flex;justify-content:space-between;gap:10px}
+.acc button small{color:var(--c2);font-weight:400}
+.acc .b{max-height:0;overflow:hidden;transition:.4s;padding:0 20px;color:var(--muted)}
+.acc.open .b{max-height:260px;padding:0 20px 18px}
+.acc.open button i{transform:rotate(45deg)}.acc button i{transition:.3s;font-style:normal;color:var(--c1)}
+.flip{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px;margin-top:20px}
+.flip>div{padding:22px;min-height:150px;cursor:pointer;transition:.3s}
+.flip>div:hover{transform:scale(1.03);border-color:var(--c2)}
+.flip small{color:var(--c2);display:block;margin-bottom:8px}
+.tool{padding:22px;display:grid;gap:12px}
+.tool .out{color:var(--c3);word-break:break-all;min-height:1.5em}
+.lbl{color:var(--muted);font-size:13px}
+footer{text-align:center;color:var(--muted);padding:36px 20px calc(30px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--border);font-size:14px}
+.modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(3,8,20,.72);backdrop-filter:blur(8px);padding:20px;align-items:center;justify-content:center;overflow:auto}.modal.open{display:flex}.modal-box{position:relative;width:min(620px,100%);max-height:90vh;overflow:auto;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:22px;padding:26px;box-shadow:0 24px 80px #0005}.modal-box input,.modal-box select{display:block;width:100%;margin:7px 0 14px;background:var(--glass);color:var(--text);border:1px solid var(--border);border-radius:10px;padding:12px;font:inherit}.modal-close{position:absolute;right:16px;top:10px;border:0;background:none;color:var(--text);font-size:30px;cursor:pointer}.material-card{background:var(--glass);border:1px solid var(--border);border-radius:16px;padding:18px;overflow-wrap:anywhere}.material-card small{display:block;color:var(--c2);margin-bottom:6px}.material-card a{color:var(--c1);font-weight:700}.material-delete{float:right;border:0;background:none;color:#f87171;cursor:pointer}.modal-box [hidden]{display:none!important}#teacherMessage{color:var(--c3);overflow-wrap:anywhere}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<canvas id="rain"></canvas><div class="glow g1"></div><div class="glow g2"></div>
+<header>
+  <div class="logo mono">&lt;İnformatika/&gt;</div>
+  <nav><a href="#home">Ana səhifə</a><a href="#classes">Siniflər</a><a href="#master">Magistratura</a><a href="#materials">Materiallar</a><a href="#lab">Laboratoriya</a><a href="#facts">Maraqlı</a></nav>
+  <div><button class="ib" id="edit">✎ Müəllim</button> <button class="ib" id="theme" aria-label="Rejim">◐</button></div>
+</header>
+<main>
+<section id="home" class="hero">
+  <span class="pill mono">● online · 2026</span>
+  <h1>Kodun <span class="grad">sirlərini</span><br>birlikdə açaq</h1>
+  <div class="type mono" id="type"></div>
+  <p class="lead">Siniflər üzrə tapşırıqlar, magistratura dərs izahları, interaktiv laboratoriya və informatika dünyasından maraqlı faktlar.</p>
+  <div><a class="btn" href="#classes">Tapşırıqlara bax →</a><a class="btn alt" href="#lab">Laboratoriya</a></div>
+  <div class="stats">
+    <div class="stat"><b class="cnt" data-n="7">0</b><span>sinif</span></div>
+    <div class="stat"><b class="cnt" data-n="14">0</b><span>tapşırıq</span></div>
+    <div class="stat"><b class="cnt" data-n="12">0</b><span>mühazirə</span></div>
+    <div class="stat"><b class="cnt" data-n="100">0</b><span>% maraq</span></div>
+  </div>
+</section>
+
+<section id="classes" class="rv">
+  <h2>🎒 Siniflər</h2>
+  <p class="sub">Sinfi seçin, tapşırıqları görün. Yerinə yetirdiklərinizi işarələyin ✔</p>
+  <div class="grid" id="classGrid"></div>
+  <div class="panel" id="taskPanel"></div>
+</section>
+
+<section id="master" class="rv">
+  <h2>🎓 Magistratura dərsləri</h2>
+  <p class="sub">Mühazirə izahları. Mövzuya klikləyin.</p>
+  <div id="acc"></div>
+</section>
+
+<section id="lab" class="rv">
+  <h2>🧪 Mini laboratoriya</h2>
+  <p class="sub">Kompüter məlumatı necə “görür”? Ədəd və ya söz yazın.</p>
+  <div class="tool">
+    <label class="lbl">Ədəd (onluq → ikilik, 16-lıq)</label>
+    <input id="num" type="number" placeholder="məs: 42" inputmode="numeric">
+    <div class="out mono" id="o1">—</div>
+    <label class="lbl">Mətn → ikilik (ASCII)</label>
+    <input id="txt" placeholder="məs: Salam">
+    <div class="out mono" id="o2">—</div>
+  </div>
+</section>
+
+<section id="facts" class="rv">
+  <h2>💡 Maraqlı məlumatlar</h2>
+  <p class="sub">Kartı çevirmək üçün toxunun.</p>
+  <div class="flip" id="flip"></div>
+</section>
+
+<section id="materials" class="rv">
+  <h2>📚 Dərs materialları</h2>
+  <p class="sub">Müəllimin paylaşdığı PDF, Word və PowerPoint fayllarını buradan açın və endirin.</p>
+  <div id="materialsList" class="flip"><div><small class="mono">Yüklənir...</small><span>Materiallar yoxlanılır.</span></div></div>
+</section>
+</main>
+<div id="teacherModal" class="modal" aria-hidden="true"><div class="modal-box"><button class="modal-close" id="closeTeacher" aria-label="Bağla">×</button><h2>🔐 Müəllim paneli</h2><p class="sub">Material əlavə etmək və ortaq tapşırıqları idarə etmək üçün müəllim hesabına daxil olun.</p><form id="teacherLogin"><label class="lbl" for="teacherEmail">E-poçt</label><input id="teacherEmail" type="email" autocomplete="username" required placeholder="müəllim e-poçtu"><label class="lbl" for="teacherPassword">Şifrə</label><input id="teacherPassword" type="password" autocomplete="current-password" required placeholder="Şifrə" minlength="6"><button class="btn" type="submit">Daxil ol</button></form><p id="teacherMessage" role="status"></p><div id="uploadPanel" hidden><hr><h3>＋ Yeni material paylaş</h3><form id="materialUpload"><label class="lbl" for="materialTitle">Materialın adı</label><input id="materialTitle" required placeholder="Məsələn: 5-ci sinif — İnformasiyanın kodlaşdırılması"><label class="lbl" for="materialClass">Sinif / bölmə</label><select id="materialClass"><option>Ümumi</option><option>5-ci sinif</option><option>6-cı sinif</option><option>7-ci sinif</option><option>8-ci sinif</option><option>9-cu sinif</option><option>10-cu sinif</option><option>11-ci sinif</option><option>Magistratura</option></select><label class="lbl" for="materialFile">Fayl (PDF, DOCX, PPTX və s.)</label><input id="materialFile" type="file" required accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.png,.jpg,.jpeg"><button class="btn" type="submit">Yüklə və paylaş</button></form></div></div></div>
+<footer class="mono">&lt;/&gt; İnformatika müəllimi · © 2026 · Adınız Soyadınız · muellim@email.az</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/* Supabase layihə məlumatlarını config.js-də əlavə edin */
+window.INFORMATIKA_CONFIG = window.INFORMATIKA_CONFIG || { url: "", anonKey: "", teacherUid: "" };
+var cloud = null, currentTeacher = null;
+try { if (window.supabase && window.INFORMATIKA_CONFIG.url && window.INFORMATIKA_CONFIG.anonKey) cloud = window.supabase.createClient(window.INFORMATIKA_CONFIG.url, window.INFORMATIKA_CONFIG.anonKey); } catch(e) { console.warn("Cloud config tamamlanmayıb", e); }
+/* ===== MƏZMUN ===== */
+var DEF={
+"5":[["Kompüterin hissələri","Əsas hissələri şəkildə göstərin və funksiyasını yazın.","1-ci həftə"],["Klaviatura ilə iş","10 dəqiqə ərzində mətni səhvsiz yazın.","2-ci həftə"]],
+"6":[["Fayl və qovluqlar","Özünüzə aid qovluq strukturu yaradın.","1-ci həftə"],["Word-də sənəd","Məktəbiniz haqqında 1 səhifəlik sənəd.","3-cü həftə"]],
+"7":[["Alqoritm nədir?","Çay dəmləmə alqoritmini blok-sxemlə çəkin.","2-ci həftə"],["Scratch layihəsi","Sadə oyun yaradın.","4-cü həftə"]],
+"8":[["Excel cədvəli","Qiymətlər cədvəli və orta bal düsturu.","2-ci həftə"],["İnternet təhlükəsizliyi","Güclü parol qaydalarını yazın.","3-cü həftə"]],
+"9":[["Python: dəyişənlər","Ad və yaş alıb ekrana çıxaran proqram.","1-ci həftə"],["Python: şərtlər","Ədədin cüt-tək olduğunu müəyyən edin.","3-cü həftə"]],
+"10":[["Dövrlər","1-dən 100-ə qədər ədədlərin cəmi.","2-ci həftə"],["Verilənlər bazası","Şagirdlər cədvəli üçün 5 sahə layihələndirin.","4-cü həftə"]],
+"11":[["Veb səhifə (HTML/CSS)","Özünüz haqqında şəxsi səhifə.","3-cü həftə"],["Layihə müdafiəsi","Mini layihə təqdim edin.","6-cı həftə"]]};
+var EM={"5":"🖥️","6":"📁","7":"🧩","8":"📊","9":"🐍","10":"🗄️","11":"🌐"};
+var HUE={"5":"#22d3ee","6":"#34d399","7":"#a78bfa","8":"#f59e0b","9":"#facc15","10":"#fb7185","11":"#60a5fa"};
+var MASTER=[["Alqoritmlərin mürəkkəbliyi","Mühazirə 1","Big-O qeydiyyatı: O(1), O(n), O(n²). Alqoritmin sürəti verilənlərin həcmi artdıqca necə dəyişir. Ən yaxşı və ən pis hallar müqayisə olunur."],
+["Verilənlər strukturları","Mühazirə 2","Massiv, siyahı, stek (LIFO), növbə (FIFO), ağac və qraf. Hər birinin əməliyyat sürəti və tətbiq sahəsi."],
+["Verilənlər bazası sistemləri","Mühazirə 3","Relyasiya modeli, açarlar, SQL sorğuları (SELECT, JOIN) və normallaşdırma qaydaları."],
+["Süni intellektə giriş","Mühazirə 4","Maşın öyrənməsi, neyron şəbəkələri, nəzarətli və nəzarətsiz öyrənmə, real tətbiqlər."]];
+var FACTS=["İlk kompüter “baqı” 1947-ci ildə real idi: rölenin içində ilişmiş güvə.","Ada Lavleys 1840-cı illərdə ilk proqram alqoritmini yazdı.","Kompüter hər şeyi yalnız 0 və 1 ilə saxlayır.","İlk kompüter siçanı 1964-cü ildə taxtadan düzəldilib.","İnternetin sələfi ARPANET 1969-da ilk mesajı göndərdi.","Python adı ilandan yox, “Monty Python” komediya qrupundan gəlir."];
+
+/* ===== Saxlama (yalnız bu brauzerdə) ===== */
+var S={},DONE={};
+try{S=JSON.parse(localStorage.getItem("tk")||"null")||{};DONE=JSON.parse(localStorage.getItem("dn")||"{}")}catch(e){}
+Object.keys(DEF).forEach(function(k){if(!S[k])S[k]=DEF[k].slice()});
+function save(){try{localStorage.setItem("tk",JSON.stringify(S));localStorage.setItem("dn",JSON.stringify(DONE))}catch(e){} if(cloud && currentTeacher && currentTeacher.id===window.INFORMATIKA_CONFIG.teacherUid){ cloud.from("site_content").upsert({id:"main",payload:{tasks:S,done:DONE},updated_at:new Date().toISOString()}).then(function(r){if(r.error)console.warn("Ortaq tapşırıqlar yadda saxlanmadı:",r.error.message)}); }}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+
+/* ===== Siniflər ===== */
+var grid=document.getElementById("classGrid"),panel=document.getElementById("taskPanel"),cur="9";
+function build(){grid.innerHTML="";Object.keys(S).forEach(function(n){
+ var b=document.createElement("button");b.className="cls"+(n===cur?" on":"");b.style.setProperty("--h",HUE[n]||"#22d3ee");
+ b.innerHTML="<div class='e'>"+(EM[n]||"📘")+"</div><b>"+n+"</b><small>"+S[n].length+" tapşırıq</small>";
+ b.onclick=function(){cur=n;build();show()};grid.appendChild(b)})}
+function show(){
+ var a=S[cur]||[];
+ var h="<h3 class='mono'>"+cur+"-ci sinif · tapşırıqlar</h3>";
+ h+=a.length?a.map(function(x,i){var id=cur+"-"+i+x[0],d=DONE[id];
+  return "<div class='task"+(d?" done":"")+"'><input type='checkbox' data-id='"+esc(id)+"'"+(d?" checked":"")+"><div><b>"+esc(x[0])+"</b>"+esc(x[1])+"<br><span class='mono'>⏱ "+esc(x[2])+"</span></div><button class='del' data-i='"+i+"' title='Sil'>✕</button></div>"}).join(""):"<p>Hələ tapşırıq yoxdur.</p>";
+ h+="<div class='form'><input id='ft' placeholder='Tapşırıq adı'><input id='fd' placeholder='İzah'><input id='fw' placeholder='Müddət'><button class='btn' id='fa'>+ Əlavə et</button></div><div class='hint'>Müəllim rejimi: əlavə etdikləriniz bu cihazın brauzerində saxlanılır.</div>";
+ panel.innerHTML=h;
+ [].forEach.call(panel.querySelectorAll("input[type=checkbox]"),function(c){c.onchange=function(){DONE[c.dataset.id]=c.checked;save();show()}});
+ [].forEach.call(panel.querySelectorAll(".del"),function(b){b.onclick=function(){S[cur].splice(+b.dataset.i,1);save();build();show()}});
+ document.getElementById("fa").onclick=function(){var t=document.getElementById("ft").value.trim();if(!t)return;
+  S[cur].push([t,document.getElementById("fd").value,document.getElementById("fw").value||"—"]);save();build();show()};
+}
+build();show();
+document.getElementById("edit").onclick=function(){openTeacherModal()};
+
+/* ===== Magistratura ===== */
+document.getElementById("acc").innerHTML=MASTER.map(function(m){return "<div class='acc'><button><span>"+esc(m[0])+" <small class='mono'>"+esc(m[1])+"</small></span><i>+</i></button><div class='b'><p>"+esc(m[2])+"</p></div></div>"}).join("");
+[].forEach.call(document.querySelectorAll(".acc button"),function(b){b.onclick=function(){b.parentNode.classList.toggle("open")}});
+
+/* ===== Laboratoriya ===== */
+document.getElementById("num").oninput=function(){var v=parseInt(this.value,10);
+ document.getElementById("o1").textContent=isNaN(v)||v<0?"—":"ikilik: "+v.toString(2)+"  ·  16-lıq: "+v.toString(16).toUpperCase()};
+document.getElementById("txt").oninput=function(){
+ document.getElementById("o2").textContent=this.value?Array.from(this.value).map(function(c){return c.charCodeAt(0).toString(2).padStart(8,"0")}).join(" "):"—"};
+
+/* ===== Faktlar ===== */
+document.getElementById("flip").innerHTML=FACTS.map(function(f,i){return "<div data-i='"+i+"'><small class='mono'>Fakt #"+(i+1)+"</small><span>Açmaq üçün toxunun 👆</span></div>"}).join("");
+[].forEach.call(document.querySelectorAll("#flip>div"),function(d){d.onclick=function(){d.querySelector("span").textContent=FACTS[+d.dataset.i]}});
+
+/* ===== Yazı effekti ===== */
+var W=["Proqramlaşdırma öyrən.","Alqoritmlər qur.","Verilənləri idarə et.","Gələcəyi kodla."],wi=0,ci=0,del=false,T=document.getElementById("type");
+(function tick(){var w=W[wi];ci+=del?-1:1;T.textContent="> "+w.slice(0,ci);
+ if(!del&&ci===w.length){del=true;return setTimeout(tick,1400)}
+ if(del&&ci===0){del=false;wi=(wi+1)%W.length}
+ setTimeout(tick,del?30:70)})();
+
+/* ===== Sayğac + reveal ===== */
+function count(el){var n=+el.dataset.n,s=0;(function f(){s+=Math.ceil(n/40);if(s>=n)s=n;el.textContent=s;if(s<n)requestAnimationFrame(f)})()}
+[].forEach.call(document.querySelectorAll(".cnt"),count);
+if("IntersectionObserver" in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("in")})},{threshold:.1});
+ [].forEach.call(document.querySelectorAll(".rv"),function(e){io.observe(e)})}else{[].forEach.call(document.querySelectorAll(".rv"),function(e){e.classList.add("in")})}
+
+/* ===== Rəqəm yağışı ===== */
+var cv=document.getElementById("rain"),cx=cv.getContext("2d"),cols,drops;
+function rs(){cv.width=innerWidth;cv.height=innerHeight;cols=Math.floor(cv.width/18);drops=Array(cols).fill(0).map(function(){return Math.random()*-50})}
+rs();addEventListener("resize",rs);
+if(!matchMedia("(prefers-reduced-motion:reduce)").matches)setInterval(function(){
+ var st=getComputedStyle(document.documentElement);
+ cx.fillStyle="rgba(0,0,0,0.12)";cx.globalCompositeOperation="destination-out";cx.fillRect(0,0,cv.width,cv.height);cx.globalCompositeOperation="source-over";
+ cx.fillStyle=st.getPropertyValue("--rain").trim()||"#22d3ee";cx.font="14px monospace";
+ for(var i=0;i<cols;i++){cx.fillText(Math.random()>.5?"1":"0",i*18,drops[i]*18);if(drops[i]*18>cv.height&&Math.random()>.975)drops[i]=0;drops[i]++}},70);
+
+/* ===== Tema ===== */
+document.getElementById("theme").onclick=function(){var r=document.documentElement,d=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.dataset.theme=d?"light":"dark"};
+
+/* ===== Bulud verilənləri və müəllim paneli ===== */
+var modal=document.getElementById("teacherModal");
+function teacherMsg(s,isError){var el=document.getElementById("teacherMessage");el.textContent=s;el.style.color=isError?"#f87171":"var(--c3)"}
+function openTeacherModal(){modal.classList.add("open");modal.setAttribute("aria-hidden","false");if(currentTeacher){document.getElementById("uploadPanel").hidden=false;teacherMsg("Müəllim hesabı ilə daxil olmusunuz.");}}
+function closeTeacherModal(){modal.classList.remove("open");modal.setAttribute("aria-hidden","true")}
+document.getElementById("closeTeacher").onclick=closeTeacherModal;
+modal.addEventListener("click",function(e){if(e.target===modal)closeTeacherModal()});
+document.getElementById("teacherLogin").onsubmit=async function(e){
+ e.preventDefault();
+ if(!cloud){teacherMsg("Supabase hələ qoşulmayıb. README.md faylındakı quraşdırma addımlarını tamamlayın.",true);return}
+ teacherMsg("Yoxlanılır...");
+ var res=await cloud.auth.signInWithPassword({email:document.getElementById("teacherEmail").value.trim(),password:document.getElementById("teacherPassword").value});
+ if(res.error){teacherMsg("Giriş alınmadı: "+res.error.message,true);return}
+ if(!window.INFORMATIKA_CONFIG.teacherUid || res.data.user.id!==window.INFORMATIKA_CONFIG.teacherUid){await cloud.auth.signOut();currentTeacher=null;document.body.classList.remove("edit");teacherMsg("Bu hesab müəllim kimi icazələndirilməyib. Müəllim UID-ni config.js-də yoxlayın.",true);return}
+ currentTeacher=res.data.user;document.body.classList.add("edit");document.getElementById("uploadPanel").hidden=false;teacherMsg("Uğurlu giriş. İndi material əlavə edə bilərsiniz.");await loadMaterials();
+};
+async function loadCloudContent(){
+ if(!cloud)return;
+ var r=await cloud.from("site_content").select("payload").eq("id","main").maybeSingle();
+ if(!r.error && r.data && r.data.payload){
+   if(r.data.payload.tasks && Object.keys(r.data.payload.tasks).length) S=r.data.payload.tasks;
+   if(r.data.payload.done) DONE=r.data.payload.done;
+   try{localStorage.setItem("tk",JSON.stringify(S));localStorage.setItem("dn",JSON.stringify(DONE))}catch(e){}
+   build();show();
+ } else if(r.error) console.warn("Ortaq tapşırıqlar oxunmadı:",r.error.message);
+}
+async function loadMaterials(){
+ var box=document.getElementById("materialsList");
+ if(!cloud){box.innerHTML="<div class='material-card'><small>Quraşdırma tələb olunur</small><span>Materialların hamıya görünməsi üçün Supabase layihəsini README.md təlimatına əsasən qoşun.</span></div>";return}
+ var r=await cloud.from("materials").select("id,title,category,file_name,storage_path,created_at").order("created_at",{ascending:false});
+ if(r.error){box.innerHTML="<div class='material-card'><small>Materiallar</small><span>Material bazası hələ qurulmayıb və ya bağlantı sazlanmayıb.</span></div>";console.warn(r.error.message);return}
+ if(!r.data.length){box.innerHTML="<div class='material-card'><small>Hələlik boşdur</small><span>Müəllim yeni material paylaşdıqda burada görünəcək.</span></div>";return}
+ box.innerHTML=r.data.map(function(m){var safe=esc(m.title),cat=esc(m.category||"Ümumi"),file=esc(m.file_name||"Fayl");var url=cloud.storage.from("materials").getPublicUrl(m.storage_path).data.publicUrl;return "<div class='material-card'><small>"+cat+"</small><b>"+safe+"</b><p>"+file+"</p><a href='"+url+"' target='_blank' rel='noopener'>Aç / Endir ↗</a>"+(currentTeacher&&currentTeacher.id===window.INFORMATIKA_CONFIG.teacherUid?" <button class='material-delete' data-mid='"+esc(m.id)+"' data-path='"+esc(m.storage_path)+"'>Sil</button>":"")+"</div>"}).join("");
+ [].forEach.call(box.querySelectorAll(".material-delete"),function(b){b.onclick=async function(){if(!confirm("Bu materialı silmək istəyirsiniz?"))return;var d=await cloud.from("materials").delete().eq("id",b.dataset.mid);if(d.error){alert("Silinmədi: "+d.error.message);return}await cloud.storage.from("materials").remove([b.dataset.path]);await loadMaterials()}});
+}
+document.getElementById("materialUpload").onsubmit=async function(e){
+ e.preventDefault();if(!cloud||!currentTeacher||currentTeacher.id!==window.INFORMATIKA_CONFIG.teacherUid){teacherMsg("Əvvəl müəllim hesabına daxil olun.",true);return}
+ var file=document.getElementById("materialFile").files[0];if(!file)return;
+ if(file.size>40*1024*1024){teacherMsg("Fayl 40 MB-dan kiçik olmalıdır.",true);return}
+ teacherMsg("Fayl yüklənir...");
+ var path=Date.now()+"-"+file.name.normalize("NFKD").replace(/[^a-zA-Z0-9._-]/g,"-");
+ var up=await cloud.storage.from("materials").upload(path,file,{upsert:false});
+ if(up.error){teacherMsg("Fayl yüklənmədi: "+up.error.message,true);return}
+ var ins=await cloud.from("materials").insert({title:document.getElementById("materialTitle").value.trim(),category:document.getElementById("materialClass").value,file_name:file.name,storage_path:path});
+ if(ins.error){await cloud.storage.from("materials").remove([path]);teacherMsg("Material siyahıya əlavə edilmədi: "+ins.error.message,true);return}
+ document.getElementById("materialUpload").reset();teacherMsg("Material uğurla paylaşıldı.");await loadMaterials();
+};
+(async function initCloud(){
+ if(!cloud){loadMaterials();return}
+ var ses=await cloud.auth.getSession();
+ if(ses.data&&ses.data.session&&ses.data.session.user.id===window.INFORMATIKA_CONFIG.teacherUid){currentTeacher=ses.data.session.user;document.body.classList.add("edit");document.getElementById("uploadPanel").hidden=false}
+ await loadCloudContent();await loadMaterials();
+ cloud.auth.onAuthStateChange(function(event,session){if(!session){currentTeacher=null;document.body.classList.remove("edit");document.getElementById("uploadPanel").hidden=true}});
+})();
+
+</script>
+</body>
+</html>
